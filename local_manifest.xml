@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote fetch="git://github.com/" name="gh" />
+
+  <project name="razrqcom-dev-team/android_device_motorola_msm8960-common" path="device/motorola/msm8960-common" remote="gh" revision="cm-10.1" />
+  <project name="razrqcom-dev-team/android_device_motorola_vanquish-common" path="device/motorola/vanquish-common" remote="gh" revision="cm-10.1" />
+  <project name="razrqcom-dev-team/android_device_motorola_xt907" path="device/motorola/xt907" remote="gh" revision="cm-10.1" />
+  <project name="razrqcom-dev-team/android_device_motorola_xt925" path="device/motorola/xt925" remote="gh" revision="cm-10.1" />
+  <project name="razrqcom-dev-team/android_device_motorola_xt926dev" path="device/motorola/xt926dev" remote="gh" revision="cm-10.1" />
+  <project name="razrqcom-dev-team/proprietary_vendor_motorola" path="vendor/motorola" remote="gh" revision="cm-10.1" />
+  <project name="razrqcom-dev-team/android_kernel_motorola_msm8960-common" path="kernel/motorola/msm8960-common" remote="gh" revision="cm-10.1" />
+</manifest>
