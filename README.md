@@ -32,10 +32,4 @@ You will need to know how to do some cherry-picks:
 
 http://review.cyanogenmod.org/#/c/28192/ Init: Allow building of init that is compatible with second init boot
 
-http://review.cyanogenmod.org/#/c/29373/ TelephonyProperties: Alpha ID fix for OPEN_CHANNEL and other p-commands (1/2)
-
-http://review.cyanogenmod.org/#/c/29616/ frameworks/base: support devices with SoftAp that don't require firmware reload
-
-http://review.cyanogenmod.org/#/c/28194/ CatService: Alpha ID fix for OPEN_CHANNEL and other p-commands (2/2)
-
 http://review.cyanogenmod.org/#/c/28195/ PhoneProxy: On v6 or greater RIL, when LTE_ON_CDMA is TRUE
