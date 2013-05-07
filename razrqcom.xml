@@ -17,7 +17,7 @@
   </project>
   <project path="hardware/qcom/audio-caf" name="CyanogenMod/android_hardware_qcom_audio-caf" remote="gh" revision="cm-10.1" />
   <project path="hardware/qcom/display" name="CyanogenMod/android_hardware_qcom_display" remote="gh" revision="cm-10.1" />
-  <project path="hardware/libhardware_legacy" name="STS-Dev-Team/platform_hardware_libhardware_legacy" remote="gh" revision="master" />
+  <project path="hardware/libhardware_legacy" name="razrqcom-dev-team/platform_hardware_libhardware_legacy" remote="gh" revision="master" />
   <project path="system/core" name="razrqcom-dev-team/platform_system_core" remote="gh" revision="master" />
 
   <project name="razrqcom-dev-team/android_device_motorola_msm8960-common" path="device/motorola/msm8960-common" remote="gh" revision="master" />
