@@ -1,7 +1,7 @@
 android_local_razrqcom
 ======================
 
-Local Manifest for Motorola Razr Qcom devices
+Local Manifest for AOSP Master on Motorola Razr Qcom devices
 
 Getting Started
 ---------------
@@ -17,7 +17,7 @@ Make a build directory:
 
 To initialize your local repository using the Cyanogemod manifest, use commands like these:
 
-    repo init -u git://github.com/CyanogenMod/android.git -b cm-10.1
+    repo init -u https://android.googlesource.com/platform/manifest
 
     curl -L -o .repo/local_manifests/razrqcom.xml -O -L https://raw.github.com/razrqcom-dev-team/android_local_razrqcom/master/razrqcom.xml
  
