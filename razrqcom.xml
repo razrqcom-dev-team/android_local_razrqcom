@@ -4,14 +4,16 @@
 
   <!-- AOSP removals -->
   <remove-project name="platform/build" />
-  <remove-project name="platform/hardware/qcom/camera" />
   <remove-project name="platform/hardware/qcom/audio" />
+  <remove-project name="platform/hardware/qcom/camera" />
+  <remove-project name="platform/hardware/qcom/display" />
 
   <!-- CM additions/AOSP replacements -->
   <project path="build" name="razrqcom-dev-team/platform_build" remote="gh" revision="master">
     <copyfile src="core/root.mk" dest="Makefile" />
   </project>
   <project path="hardware/qcom/audio-caf" name="CyanogenMod/android_hardware_qcom_audio-caf" remote="gh" revision="cm-10.1" />
+  <project path="hardware/qcom/display" name="CyanogenMod/android_hardware_qcom_display" remote="gh" revision="cm-10.1" />
 
   <project name="razrqcom-dev-team/android_device_motorola_msm8960-common" path="device/motorola/msm8960-common" remote="gh" revision="cm-10.1" />
   <project name="razrqcom-dev-team/android_device_motorola_xt897" path="device/motorola/xt897" remote="gh" revision="cm-10.1" />
