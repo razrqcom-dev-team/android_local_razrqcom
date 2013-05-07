@@ -4,23 +4,23 @@
 
   <!-- AOSP removals -->
   <remove-project name="platform/build" />
-  <remove-project name="platform/hardware/qcom/audio" />
   <remove-project name="platform/hardware/qcom/camera" />
   <remove-project name="platform/hardware/qcom/display" />
   <remove-project name="platform/hardware/qcom/power" />
+  <!--<remove-project name="platform/hardware/qcom/audio" />
   <remove-project name="platform/hardware/libhardware" />
   <remove-project name="platform/hardware/libhardware_legacy" />
-  <remove-project name="platform/system/core" />
+  <remove-project name="platform/system/core" /> -->
 
   <!-- CM additions/AOSP replacements -->
   <project path="build" name="razrqcom-dev-team/platform_build" remote="gh" revision="master">
     <copyfile src="core/root.mk" dest="Makefile" />
   </project>
-  <project path="hardware/qcom/audio-caf" name="CyanogenMod/android_hardware_qcom_audio-caf" remote="gh" revision="cm-10.1" />
   <project path="hardware/qcom/display" name="CyanogenMod/android_hardware_qcom_display" remote="gh" revision="cm-10.1" />
+  <!--<project path="hardware/qcom/audio-caf" name="CyanogenMod/android_hardware_qcom_audio-caf" remote="gh" revision="cm-10.1" />
   <project path="hardware/libhardware" name="CyanogenMod/android_hardware_libhardware" remote="gh" revision="cm-10.1" />
   <project path="hardware/libhardware_legacy" name="CyanogenMod/android_hardware_libhardware_legacy" remote="gh" revision="cm-10.1" />
-  <project path="system/core" name="razrqcom-dev-team/platform_system_core" remote="gh" revision="master" />
+  <project path="system/core" name="razrqcom-dev-team/platform_system_core" remote="gh" revision="master" /> -->
 
   <project name="razrqcom-dev-team/android_device_motorola_msm8960-common" path="device/motorola/msm8960-common" remote="gh" revision="master" />
   <project name="razrqcom-dev-team/android_device_motorola_xt897" path="device/motorola/xt897" remote="gh" revision="cm-10.1" />
