@@ -5,6 +5,7 @@
   <!-- AOSP removals -->
   <remove-project name="platform/build" />
   <remove-project name="platform/frameworks/av" />
+  <remove-project name="platform/frameworks/native" />
   <remove-project name="platform/hardware/qcom/camera" />
   <remove-project name="platform/hardware/qcom/display" />
   <remove-project name="platform/hardware/qcom/power" />
@@ -18,6 +19,7 @@
     <copyfile src="core/root.mk" dest="Makefile" />
   </project>
   <project path="frameworks/av" name="razrqcom-dev-team/platform_frameworks_av" remote="gh" revision="master" />
+  <project path="frameworks/native" name="razrqcom-dev-team/platform_frameworks_native" remote="gh" revision="master" />
   <project path="hardware/qcom/display" name="razrqcom-dev-team/android_hardware_qcom_display" remote="gh" revision="cm-10.1" />
   <project path="system/core" name="razrqcom-dev-team/platform_system_core" remote="gh" revision="master" />
   <!--<project path="hardware/qcom/audio-caf" name="CyanogenMod/android_hardware_qcom_audio-caf" remote="gh" revision="cm-10.1" />
