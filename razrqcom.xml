@@ -6,6 +6,7 @@
   <remove-project name="platform/build" />
   <remove-project name="platform/frameworks/av" />
   <remove-project name="platform/frameworks/native" />
+  <remove-project name="platform/frameworks/opt/telephony" />
   <remove-project name="platform/hardware/qcom/audio" />
   <remove-project name="platform/hardware/qcom/camera" />
   <remove-project name="platform/hardware/qcom/display" />
@@ -22,6 +23,7 @@
   </project>
   <project path="frameworks/av" name="razrqcom-dev-team/platform_frameworks_av" remote="gh" revision="master" />
   <project path="frameworks/native" name="razrqcom-dev-team/platform_frameworks_native" remote="gh" revision="master" />
+  <project path="frameworks/opt/telephony" name="razrqcom-dev-team/platform_frameworks_opt_telephony" remote="gh" revision="master" />
   <project path="hardware/qcom/audio-caf" name="CyanogenMod/android_hardware_qcom_audio-caf" remote="gh" revision="cm-10.1" />
   <project path="hardware/qcom/display" name="razrqcom-dev-team/android_hardware_qcom_display" remote="gh" revision="cm-10.1" />
   <project path="hardware/qcom/media" name="CyanogenMod/android_hardware_qcom_media" remote="gh" revision="cm-10.1" />
