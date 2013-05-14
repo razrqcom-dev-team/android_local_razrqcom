@@ -36,7 +36,7 @@
   <project path="hardware/libhardware_legacy" name="CyanogenMod/android_hardware_libhardware_legacy" remote="gh" revision="cm-10.1" />
 
   <project name="razrqcom-dev-team/android_device_motorola_msm8960-common" path="device/motorola/msm8960-common" remote="gh" revision="master" />
-  <project name="razrqcom-dev-team/android_device_motorola_xt897" path="device/motorola/xt897" remote="gh" revision="cm-10.1" />
+  <project name="razrqcom-dev-team/android_device_motorola_xt897" path="device/motorola/xt897" remote="gh" revision="master" />
   <project name="razrqcom-dev-team/android_device_motorola_xt897c" path="device/motorola/xt897c" remote="gh" revision="cm-10.1" />
   <project name="razrqcom-dev-team/android_device_motorola_xt907" path="device/motorola/xt907" remote="gh" revision="cm-10.1" />
   <project name="razrqcom-dev-team/android_device_motorola_xt925" path="device/motorola/xt925" remote="gh" revision="cm-10.1" />
