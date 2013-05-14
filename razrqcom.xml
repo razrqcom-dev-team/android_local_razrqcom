@@ -14,6 +14,7 @@
   <remove-project name="platform/hardware/qcom/media" />
   <remove-project name="platform/hardware/qcom/power" />
   <remove-project name="platform/system/core" />
+  <remove-project name="platform/system/extras" />
 
   <remove-project name="platform/hardware/libhardware" />
   <remove-project name="platform/hardware/libhardware_legacy" />
@@ -30,6 +31,7 @@
   <project path="hardware/qcom/display" name="razrqcom-dev-team/android_hardware_qcom_display" remote="gh" revision="cm-10.1" />
   <project path="hardware/qcom/media" name="CyanogenMod/android_hardware_qcom_media" remote="gh" revision="cm-10.1" />
   <project path="system/core" name="razrqcom-dev-team/platform_system_core" remote="gh" revision="master" />
+  <project path="system/extras" name="razrqcom-dev-team/platform_system_extras" remote="gh" revision="master" />
   <project path="hardware/libhardware" name="CyanogenMod/android_hardware_libhardware" remote="gh" revision="cm-10.1" />
   <project path="hardware/libhardware_legacy" name="CyanogenMod/android_hardware_libhardware_legacy" remote="gh" revision="cm-10.1" />
 
