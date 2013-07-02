@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remove-project name="ParanoidAndroid/android_vendor_pa" />
+
+  <project path="vendor/pa" name="razrqcom-dev-team/android_vendor_pa" remote="github" revision="jellybean" />
+  <project name="razrqcom-dev-team/android_device_motorola_mb886" path="device/motorola/mb886" remote="github" revision="cm-10.1" />
+  <project name="razrqcom-dev-team/android_device_motorola_xt897" path="device/motorola/xt897" remote="github" revision="master" />
+  <project name="razrqcom-dev-team/android_device_motorola_xt897c" path="device/motorola/xt897c" remote="github" revision="cm-10.1" />
+  <project name="razrqcom-dev-team/android_device_motorola_xt907" path="device/motorola/xt907" remote="github" revision="cm-10.1" />
+  <project name="razrqcom-dev-team/android_device_motorola_xt925" path="device/motorola/xt925" remote="github" revision="cm-10.1" />
+  <project name="razrqcom-dev-team/android_device_motorola_xt926" path="device/motorola/xt926" remote="github" revision="cm-10.1" />
+</manifest>

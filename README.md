@@ -1,7 +1,7 @@
 android_local_razrqcom
 ======================
 
-Local Manifest for Cyanogenmod 10.1 on Motorola Razr Qcom devices
+Local Manifest for ParanoidAndroid on Motorola Razr Qcom devices
 
 Getting Started
 ---------------
@@ -15,13 +15,13 @@ Make a build directory:
 	cd Android (or the name  you chose)
 	mkdir .repo/local_manifests
 
-To initialize your local repository using the Cyanogemod manifest, use commands like these:
+To initialize your local repository using the ParanoidAndroid manifest, use commands like these:
 
-    repo init -u git://github.com/CyanogenMod/android.git -b cm-10.1
+    repo init -u git@github.com:ParanoidAndroid/manifest.git -b jellybean
 
-    curl -L -o .repo/local_manifests/razrqcom.xml -O -L https://raw.github.com/razrqcom-dev-team/android_local_razrqcom/cm-10.1/razrqcom.xml
+    curl -L -o .repo/local_manifests/roomservice.xml -O -L https://raw.github.com/razrqcom-dev-team/android_local_razrqcom/pa/roomservice.xml
  
-    	( or Download: https://github.com/razrqcom-dev-team/android_local_razrqcom/blob/cm-10.1/razrqcom.xml
+		( or Download: https://github.com/razrqcom-dev-team/android_local_razrqcom/blob/pa/roomservice.xml
 		and place it in ~/Android/.repo/local_manifest.xml (or ~/'name you chose'/.repo)
 
 Then to sync up:
