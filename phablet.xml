@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote fetch="git://github.com/" name="gh" />
+
+  <remove-project name="CyanogenMod/android_build" />
+  <remove-project name="CyanogenMod/android_hardware_qcom_display-caf" />
+
+  <!-- Ubuntu phablet replacements -->
+  <project path="build" name="STS-Dev-Team/android_build" remote="gh" revision="phablet" >
+    <copyfile src="core/root.mk" dest="Makefile" />
+  </project>
+  <project path="hardware/qcom/display-caf" name="CyanogenMod/android_hardware_qcom_display-caf" remote="gh" revision="cm-10.1" />
+
+  <project name="razrqcom-dev-team/android_device_motorola_msm8960-common" path="device/motorola/msm8960-common" remote="gh" revision="phablet" />
+  <project name="razrqcom-dev-team/android_device_motorola_xt926" path="device/motorola/xt926" remote="gh" revision="phablet" />
+  <project name="razrqcom-dev-team/android_vendor_motorola_msm8960-common" path="vendor/motorola/msm8960-common" remote="gh" revision="cm-10.1" />
+  <project name="razrqcom-dev-team/android_vendor_motorola_xt926" path="vendor/motorola/xt926" remote="gh" revision="cm-10.1" />
+  <project name="razrqcom-dev-team/android_kernel_motorola_msm8960-common" path="kernel/motorola/msm8960-common" remote="gh" revision="cm-10.1" />
+</manifest>
