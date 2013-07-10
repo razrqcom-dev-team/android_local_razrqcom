@@ -27,4 +27,6 @@ To initialize your local repository using the Cyanogemod manifest, use commands 
 
 Then to sync up:
 
-    repo sync
+    phablet-dev-bootstrap [target_directory that you chose] -c
+    On subsequent builds you may need to cd [target_directory that you chose]/ubuntu/platform-api
+    and issue the command 'bzr pull' to get the latest updates.
