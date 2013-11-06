@@ -25,7 +25,7 @@
   <project path="external/sepolicy" name="STS-Dev-Team/platform_external_sepolicy" remote="github" revision="kk" />
   <project path="frameworks/av" name="STS-Dev-Team/platform_frameworks_av" remote="github" revision="kk" />
   <project path="frameworks/base" name="STS-Dev-Team/platform_frameworks_base" remote="github" revision="kk" />
-  <project path="frameworks/native" name="TEAM-Gummy/platform_frameworks_native" remote="github" revision="kk4.4" />
+  <project path="frameworks/native" name="STS-Dev-Team/platform_frameworks_native" remote="github" revision="kk" />
   <project path="system/core" name="STS-Dev-Team/platform_system_core" remote="github" revision="kk" />
   <project path="hardware/qcom/audio-caf" name="STS-Dev-Team/android_hardware_qcom_audio-caf" remote="github" revision="kk" />
   <project path="hardware/qcom/display" name="STS-Dev-Team/platform_hardware_qcom_display" remote="github" revision="kk" />
