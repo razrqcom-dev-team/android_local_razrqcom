@@ -32,7 +32,7 @@
   <project path="hardware/qcom/media" name="STS-Dev-Team/platform_hardware_qcom_media" remote="github" revision="kk" />
   <project path="hardware/libhardware" name="STS-Dev-Team/platform_hardware_libhardware" remote="github" revision="kk" />
   <project path="hardware/libhardware_legacy" name="platform/hardware/libhardware_legacy" remote="caf" revision="kk_2.7_rb1.9" />
-  <project path="hardware/cm" name="CyanogenMod/android_hardware_cm" remote="github" revision="cm-10.2" />
+  <project path="hardware/cm" name="CyanogenMod/android_hardware_cm" remote="github" revision="cm-11.0" />
   <project path="vendor/motorola" name="razrqcom-dev-team/proprietary_vendor_motorola" remote="github" revision="kk" />
   <project name="razrqcom-dev-team/android_device_motorola_xt1055" path="device/motorola/xt1055" remote="github" revision="kk" />
   <project name="razrqcom-dev-team/android_device_motorola_xt1056" path="device/motorola/xt1056" remote="github" revision="kk" />
@@ -42,4 +42,12 @@
   <project name="razrqcom-dev-team/android_device_motorola_qcom-common" path="device/motorola/qcom-common" remote="github" revision="kk" />
   <project name="razrqcom-dev-team/android_device_motorola_msm8960dt-common" path="device/motorola/msm8960dt-common" remote="github" revision="kk" />
   <project name="razrqcom-dev-team/android_kernel_motorola_msm8960dt-common" path="kernel/motorola/msm8960dt-common" remote="github" revision="kk" />
+  <project name="razrqcom-dev-team/android_device_motorola_xt925" path="device/motorola/xt925" remote="github" revision="kk" />
+  <project name="razrqcom-dev-team/android_device_motorola_xt907" path="device/motorola/xt907" remote="github" revision="kk" />
+  <project name="razrqcom-dev-team/android_device_motorola_xt897" path="device/motorola/xt897" remote="github" revision="kk" />
+  <project name="razrqcom-dev-team/android_device_motorola_xt897c" path="device/motorola/xt897c" remote="github" revision="kk" />
+  <project name="razrqcom-dev-team/android_device_motorola_mb886" path="device/motorola/mb886" remote="github" revision="kk" />
+  <project name="razrqcom-dev-team/android_device_motorola_xt926" path="device/motorola/xt926" remote="github" revision="kk" />
+  <project name="razrqcom-dev-team/android_device_motorola_msm8960-common" path="device/motorola/msm8960-common" remote="github" revision="kk" />
+  <project name="razrqcom-dev-team/android_kernel_motorola_msm8960-common" path="kernel/motorola/msm8960-common" remote="github" revision="kk" />
 </manifest>
