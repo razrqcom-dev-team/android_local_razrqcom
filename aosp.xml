@@ -34,16 +34,6 @@
   <project path="hardware/libhardware_legacy" name="platform/hardware/libhardware_legacy" remote="caf" revision="kk_2.7_rb1.9" />
   <project path="hardware/cm" name="CyanogenMod/android_hardware_cm" remote="github" revision="cm-10.2" />
   <project path="vendor/motorola" name="razrqcom-dev-team/proprietary_vendor_motorola" remote="github" revision="kk" />
-  <project path="vendor/lge" name="TheMuppets/proprietary_vendor_lge" remote="github" revision="cm-10.2" />
-  <project path="vendor/broadcom" name="TheMuppets/proprietary_vendor_broadcom" remote="github" revision="cm-10.2" />
-  <project path="vendor/imgtec" name="TheMuppets/proprietary_vendor_imgtec" remote="github" revision="cm-10.2" />
-  <project path="vendor/invensense" name="TheMuppets/proprietary_vendor_invensense" remote="github" revision="cm-10.2" />
-  <project path="vendor/nxp" name="TheMuppets/proprietary_vendor_nxp" remote="github" revision="cm-10.2" />
-  <project path="vendor/samsung" name="TheMuppets/proprietary_vendor_samsung" remote="github" revision="cm-10.2" />
-  <project path="vendor/asus" name="TheMuppets/proprietary_vendor_asus" remote="github" revision="cm-10.2" />
-  <project path="vendor/elan" name="TheMuppets/proprietary_vendor_elan" remote="github" revision="cm-10.1" />
-  <project path="vendor/nvidia" name="TheMuppets/proprietary_vendor_nvidia" remote="github" revision="cm-10.2" />
-  <project path="vendor/widevine" name="TheMuppets/proprietary_vendor_widevine" remote="github" revision="cm-10.2" />
   <project name="razrqcom-dev-team/android_device_motorola_xt1055" path="device/motorola/xt1055" remote="github" revision="kk" />
   <project name="razrqcom-dev-team/android_device_motorola_xt1056" path="device/motorola/xt1056" remote="github" revision="kk" />
   <project name="razrqcom-dev-team/android_device_motorola_xt1053" path="device/motorola/xt1053" remote="github" revision="kk" />
@@ -51,5 +41,5 @@
   <project name="razrqcom-dev-team/android_device_motorola_xt1060" path="device/motorola/xt1060" remote="github" revision="kk" />
   <project name="razrqcom-dev-team/android_device_motorola_qcom-common" path="device/motorola/qcom-common" remote="github" revision="kk" />
   <project name="razrqcom-dev-team/android_device_motorola_msm8960dt-common" path="device/motorola/msm8960dt-common" remote="github" revision="kk" />
-  <project name="razrqcom-dev-team/android_kernel_motorola_msm8960dt-common" path="kernel/motorola/msm8960dt-common" remote="github" revision="cm-10.2" />
+  <project name="razrqcom-dev-team/android_kernel_motorola_msm8960dt-common" path="kernel/motorola/msm8960dt-common" remote="github" revision="kk" />
 </manifest>
