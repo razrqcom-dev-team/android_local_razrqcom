@@ -18,6 +18,7 @@
   <remove-project name="platform/hardware/libhardware" />
   <remove-project name="platform/hardware/libhardware_legacy" />
   <remove-project name="platform/hardware/qcom/power" />
+  <remove-project name="platform/hardware/ril" />
 
   <!-- AOSP replacements -->
   <project path="build" name="STS-Dev-Team/platform_build" remote="github" revision="kk">
@@ -35,6 +36,7 @@
   <project path="hardware/libhardware" name="STS-Dev-Team/platform_hardware_libhardware" remote="github" revision="kk" />
   <project path="hardware/libhardware_legacy" name="platform/hardware/libhardware_legacy" remote="caf" revision="kk_2.7_rb1.9" />
   <project path="hardware/cm" name="CyanogenMod/android_hardware_cm" remote="github" revision="cm-11.0" />
+  <project path="hardware/ril" name="CyanogenMod/android_hardware_ril" remote="github" revision="cm-11.0" />
   <project path="vendor/motorola" name="razrqcom-dev-team/proprietary_vendor_motorola" remote="github" revision="kk" />
   <project name="razrqcom-dev-team/android_device_motorola_xt1055" path="device/motorola/xt1055" remote="github" revision="kk" />
   <project name="razrqcom-dev-team/android_device_motorola_xt1056" path="device/motorola/xt1056" remote="github" revision="kk" />
