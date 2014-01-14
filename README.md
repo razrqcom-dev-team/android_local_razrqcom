@@ -1,7 +1,7 @@
 android_local_razrqcom
 ======================
 
-Local Manifest for AOSP KitKat on Motorola Razr Qcom devices
+Local Manifest for KitKat on Motorola msm8226 devices
 
 Getting Started
 ---------------
@@ -15,13 +15,20 @@ Make a build directory:
 	cd Android (or the name  you chose)
 	mkdir .repo/local_manifests
 
-To initialize your local repository using the AOSP manifest, use commands like these:
+To initialize your local repository using the CyanogenMod manifest, use commands like these:
 
-    repo init -u https://android.googlesource.com/platform/manifest -b android-4.4_r1
+    repo init -u git://github.com/CyanogenMod/android.git -b cm-11.0
 
-    curl -L -o .repo/local_manifests/aosp.xml -O -L https://raw.github.com/razrqcom-dev-team/android_local_razrqcom/aosp-kk/aosp.xml
+    curl -L -o .repo/local_manifests/msm8226.xml -O -L https://raw.github.com/razrqcom-dev-team/android_local_razrqcom/msm8226-kk/msm8226.xml
  
-    	( or Download: https://github.com/razrqcom-dev-team/android_local_razrqcom/blob/aosp-kk/aosp.xml
+    	( or Download: https://github.com/razrqcom-dev-team/android_local_razrqcom/blob/msm8226-kk/msm8226.xml
+		and place it in ~/Android/.repo/local_manifest.xml (or ~/'name you chose'/.repo)
+
+If you want to use my CAF repositories that are more current than CM/AOSP ones, and fix Netflix:
+
+    curl -L -o .repo/local_manifests/msm8226-caf.xml -O -L https://raw.github.com/razrqcom-dev-team/android_local_razrqcom/msm8226-kk/msm8226-caf.xml
+ 
+    	( or Download: https://github.com/razrqcom-dev-team/android_local_razrqcom/blob/msm8226-kk/msm8226-caf.xml
 		and place it in ~/Android/.repo/local_manifest.xml (or ~/'name you chose'/.repo)
 
 Then to sync up:
