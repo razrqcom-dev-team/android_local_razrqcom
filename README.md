@@ -39,3 +39,8 @@ You will need to patch InCallUi, system/core and device/qcom/msm8226, use comman
     cd ~/Android/packages/apps/InCallUi
     wget https://raw2.github.com/razrqcom-dev-team/android_local_razrqcom/aosp-caf-8226/caf_8226_InCallUi.patch
     git am --signoff < caf_8226_InCallUi.patch
+
+Then to build:
+
+    . build/envsetup.sh && lunch full_falcon-userdebug
+    make otapackage (or make -jx otapackage)
