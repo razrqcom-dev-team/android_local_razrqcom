@@ -24,14 +24,17 @@ To initialize your local repository using the Code Aurora manifest, use commands
         ( or Download: https://github.com/razrqcom-dev-team/android_local_razrqcom/blob/aosp-caf-8226/aosp-caf-8226..xml
 		and place it in ~/Android/.repo/local_manifest.xml (or ~/'name you chose'/.repo)
 
-You will need to patch system/core and device/qcom/msm8226, use commands like these:
+You will need to patch InCallUi, system/core and device/qcom/msm8226, use commands like these:
 
-    cd Android/system/core
+    cd ~/Android/system/core
     wget https://raw2.github.com/razrqcom-dev-team/android_local_razrqcom/aosp-caf-8226/caf_8226_system_core.patch
     git am --signoff < caf_8226_system_core.patch
-    cd Android/device/qcom/msm8226
+    cd ~/Android/device/qcom/msm8226
     wget https://raw2.github.com/razrqcom-dev-team/android_local_razrqcom/aosp-caf-8226/caf_8226_device.patch
     git am --signoff < caf_8226_device.patch
+    cd ~/Android/packages/apps/InCallUi
+    wget https://raw2.github.com/razrqcom-dev-team/android_local_razrqcom/aosp-caf-8226/caf_8226_InCallUi.patch
+    git am --signoff < caf_8226_InCallUi.patch
 
 Then to sync up:
 
