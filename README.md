@@ -1,7 +1,7 @@
 android_local_razrqcom
 ======================
 
-Local Manifest for KitKat on Motorola msm8226 devices
+Local Manifest for AOSP/CAF KitKat on Motorola msm8226 devices
 
 Getting Started
 ---------------
@@ -11,34 +11,27 @@ familiar with [Git and Repo](http://source.android.com/download/using-repo).
 
 Make a build directory:
 
-	mkdir Andoid (or whatever name you choose)
-	cd Android (or the name  you chose)
+	mkdir Andoid (or substitute whatever name you choose - refered to as Android from here on)
+	cd Android
 	mkdir .repo/local_manifests
 
-To initialize your local repository using the CyanogenMod manifest, use commands like these:
+To initialize your local repository using the Code Aurora manifest, use commands like these:
 
-    repo init -u git://github.com/CyanogenMod/android.git -b cm-11.0
+    repo init -u git://codeaurora.org/platform/manifest.git -b release -m default_LNX.LA.3.5-08410-8x26.0.xml
 
-To use all CM qcom/aosp repositories:
-
-    curl -L -o .repo/local_manifests/msm8226.xml -O -L https://raw.github.com/razrqcom-dev-team/android_local_razrqcom/msm8226-kk/msm8226.xml
+    curl -L -o .repo/local_manifests/aosp-caf-8226.xml -O -L https://raw.github.com/razrqcom-dev-team/android_local_razrqcom/aosp-caf-8226/aosp-caf-8226.xml
  
-    	( or Download: https://github.com/razrqcom-dev-team/android_local_razrqcom/blob/msm8226-kk/msm8226.xml
+        ( or Download: https://github.com/razrqcom-dev-team/android_local_razrqcom/blob/aosp-caf-8226/aosp-caf-8226..xml
 		and place it in ~/Android/.repo/local_manifest.xml (or ~/'name you chose'/.repo)
 
-OR if you want to use my CAF repositories that are more current than CM/AOSP ones, and fix Netflix:
+You will need to patch system/core and device/qcom/msm8226, use commands like these:
 
-    curl -L -o .repo/local_manifests/msm8226-caf.xml -O -L https://raw.github.com/razrqcom-dev-team/android_local_razrqcom/msm8226-kk/msm8226-caf.xml
- 
-    	( or Download: https://github.com/razrqcom-dev-team/android_local_razrqcom/blob/msm8226-kk/msm8226-caf.xml
-		and place it in ~/Android/.repo/local_manifest.xml (or ~/'name you chose'/.repo)
-
-To sync the vendor files:
-
-    curl -L -o .repo/local_manifests/vendor.xml -O -L https://raw.github.com/razrqcom-dev-team/android_local_razrqcom/msm8226-kk/vendor.xml
- 
-    	( or Download: https://github.com/razrqcom-dev-team/android_local_razrqcom/blob/msm8226-kk/vendor.xml
-		and place it in ~/Android/.repo/local_manifest.xml (or ~/'name you chose'/.repo)
+    cd Android/system/core
+    wget https://raw2.github.com/razrqcom-dev-team/android_local_razrqcom/aosp-caf-8226/caf_8226_system_core.patch
+    git am --signoff < caf_8226_system_core.patch
+    cd Android/device/qcom/msm8226
+    wget https://raw2.github.com/razrqcom-dev-team/android_local_razrqcom/aosp-caf-8226/caf_8226_device.patch
+    git am --signoff < caf_8226_device.patch
 
 Then to sync up:
 

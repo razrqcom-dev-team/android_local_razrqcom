@@ -1,0 +1,325 @@
+From 8bf18f3fb07a472770320b828724dffab2adaa6b Mon Sep 17 00:00:00 2001
+From: Ricardo Cerqueira <cyanogenmod@cerqueira.org>
+Date: Wed, 4 Jul 2012 15:26:57 +0100
+Subject: [PATCH 1/3] init: Add a mechanism to extend the property service in
+ device configs
+
+Instead of every so often adding a new set of stuff here for a specific
+device, let the device includes overload the property arrays. The
+new device_perms.h header documents it
+
+Change-Id: I477e27abebeb4b85abe5fcaf19333999b1625417
+
+Conflicts:
+	init/property_service.c
+---
+ init/device_perms.h     | 29 +++++++++++++++++++++++++++++
+ init/property_service.c |  8 ++++++++
+ 2 files changed, 37 insertions(+)
+ create mode 100644 init/device_perms.h
+
+diff --git a/init/device_perms.h b/init/device_perms.h
+new file mode 100644
+index 0000000..504c0ab
+--- /dev/null
++++ b/init/device_perms.h
+@@ -0,0 +1,29 @@
++// Overload this file in your own device-specific config if you need
++// non-standard property_perms and/or control_perms structs
++//
++// To avoid conflicts...
++// if you redefine property_perms, #define PROPERTY_PERMS there
++// if you redefine control_perms, #define CONTROL_PARMS there
++//
++// A typical file will look like:
++//
++/*
++
++#define CONTROL_PERMS
++
++struct {
++    const char *service;
++    unsigned int uid;
++    unsigned int gid;
++} control_perms[] = {
++    // The default perms
++    { "dumpstate",AID_SHELL, AID_LOG },
++    { "ril-daemon",AID_RADIO, AID_RADIO },
++    // My magic device perms
++    { "rawip_vsnet1",AID_RADIO, AID_RADIO },
++    { "rawip_vsnet2",AID_RADIO, AID_RADIO },
++    { "rawip_vsnet3",AID_RADIO, AID_RADIO },
++    { "rawip_vsnet4",AID_RADIO, AID_RADIO },
++     {NULL, 0, 0 }
++};
++*/
+diff --git a/init/property_service.c b/init/property_service.c
+index 2ce2e49..91e0412 100644
+--- a/init/property_service.c
++++ b/init/property_service.c
+@@ -68,6 +68,8 @@
+ #include "util.h"
+ #include "log.h"
+ 
++#include <device_perms.h>
++
+ #define PERSISTENT_PROPERTY_DIR  "/data/property"
+ 
+ static int persistent_properties_loaded = 0;
+@@ -76,6 +78,7 @@ static int property_area_inited = 0;
+ static int property_set_fd = -1;
+ 
+ /* White list of permissions for setting property services. */
++#ifndef PROPERTY_PERMS
+ struct {
+     const char *prefix;
+     unsigned int uid;
+@@ -123,11 +126,14 @@ struct {
+ #endif // DOLBY_END
+     { NULL, 0, 0 }
+ };
++/* Avoid extending this array. Check device_perms.h */
++#endif
+ 
+ /*
+  * White list of UID that are allowed to start/stop services.
+  * Currently there are no user apps that require.
+  */
++#ifndef CONTROL_PERMS
+ struct {
+     const char *service;
+     unsigned int uid;
+@@ -137,6 +143,8 @@ struct {
+     { "ril-daemon",AID_RADIO, AID_RADIO },
+      {NULL, 0, 0 }
+ };
++/* Avoid extending this array. Check device_perms.h */
++#endif
+ 
+ typedef struct {
+     size_t size;
+-- 
+1.8.1.2
+
+
+From 796f01187d72a921ba1ab8cd190aec887b103ac5 Mon Sep 17 00:00:00 2001
+From: Mike Kasick <mike@kasick.org>
+Date: Thu, 25 Oct 2012 22:08:55 -0400
+Subject: [PATCH 2/3] init: Allow device-specific appends to the property
+ service permission structs
+
+Extends device_perms.h API to allow property_perms and control_perms to be
+appended on a device-specific basis, without needing to redefine the entire
+struct contents.
+
+Conflicts:
+	init/property_service.c
+
+Change-Id: Ib66422c873bd32670633ce1d721fd843c9098fe7
+---
+ init/device_perms.h     | 10 ++++++++++
+ init/property_service.c |  6 ++++++
+ 2 files changed, 16 insertions(+)
+
+diff --git a/init/device_perms.h b/init/device_perms.h
+index 504c0ab..dbd6ca4 100644
+--- a/init/device_perms.h
++++ b/init/device_perms.h
+@@ -27,3 +27,13 @@ struct {
+      {NULL, 0, 0 }
+ };
+ */
++
++// Alternatively you can append to the existing property_perms and/or
++// control_perms structs with the following:
++/*
++#define CONTROL_PERMS_APPEND \
++    { "rawip_vsnet1",AID_RADIO, AID_RADIO }, \
++    { "rawip_vsnet2",AID_RADIO, AID_RADIO }, \
++    { "rawip_vsnet3",AID_RADIO, AID_RADIO }, \
++    { "rawip_vsnet4",AID_RADIO, AID_RADIO },
++*/
+diff --git a/init/property_service.c b/init/property_service.c
+index 91e0412..71f7042 100644
+--- a/init/property_service.c
++++ b/init/property_service.c
+@@ -124,6 +124,9 @@ struct {
+     // used for setting Dolby specific properties
+     { "dolby.", AID_SYSTEM,   0 },
+ #endif // DOLBY_END
++#ifdef PROPERTY_PERMS_APPEND
++PROPERTY_PERMS_APPEND
++#endif
+     { NULL, 0, 0 }
+ };
+ /* Avoid extending this array. Check device_perms.h */
+@@ -141,6 +144,9 @@ struct {
+ } control_perms[] = {
+     { "dumpstate",AID_SHELL, AID_LOG },
+     { "ril-daemon",AID_RADIO, AID_RADIO },
++#ifdef CONTROL_PERMS_APPEND
++CONTROL_PERMS_APPEND
++#endif
+      {NULL, 0, 0 }
+ };
+ /* Avoid extending this array. Check device_perms.h */
+-- 
+1.8.1.2
+
+
+From a1a522e6a248164c18a6bfea3d17c944fa2491e4 Mon Sep 17 00:00:00 2001
+From: Emerson Pinter <dev@pinter.com.br>
+Date: Mon, 26 Nov 2012 21:48:12 -0200
+Subject: [PATCH 3/3] liblog: add required function
+
+Some Motorola proprietaries require a function named __android_log_loggable. This
+change adds the function and solves problems with radio and other
+binaries on qualcomm based Motorola phones. This code is activated with
+TARGET_USES_MOTOROLA_LOG:=true
+
+Change-Id: I722b42d34198c027f265c3cf9f220d9798814915
+
+Conflicts:
+	liblog/logd_write.c
+---
+ liblog/Android.mk   |  5 +++
+ liblog/logd_write.c | 91 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 96 insertions(+)
+
+diff --git a/liblog/Android.mk b/liblog/Android.mk
+index 6bfb119..19f880b 100644
+--- a/liblog/Android.mk
++++ b/liblog/Android.mk
+@@ -67,15 +67,20 @@ LOCAL_LDLIBS := -lpthread
+ LOCAL_CFLAGS := -DFAKE_LOG_DEVICE=1 -m64
+ include $(BUILD_HOST_STATIC_LIBRARY)
+ 
++ifeq ($(TARGET_USES_MOTOROLA_LOG),true)
++LIBLOG_CFLAGS := -DMOTOROLA_LOG
++endif
+ 
+ # Shared and static library for target
+ # ========================================================
+ include $(CLEAR_VARS)
++LOCAL_CFLAGS += $(LIBLOG_CFLAGS)
+ LOCAL_MODULE := liblog
+ LOCAL_SRC_FILES := $(liblog_sources)
+ include $(BUILD_STATIC_LIBRARY)
+ 
+ include $(CLEAR_VARS)
++LOCAL_CFLAGS += $(LIBLOG_CFLAGS)
+ LOCAL_MODULE := liblog
+ LOCAL_WHOLE_STATIC_LIBRARIES := liblog
+ include $(BUILD_SHARED_LIBRARY)
+diff --git a/liblog/logd_write.c b/liblog/logd_write.c
+index fff7cc4..662407f 100644
+--- a/liblog/logd_write.c
++++ b/liblog/logd_write.c
+@@ -27,6 +27,12 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ 
++#ifdef MOTOROLA_LOG
++#if HAVE_LIBC_SYSTEM_PROPERTIES
++#include <sys/system_properties.h>
++#endif
++#endif
++
+ #include <log/logger.h>
+ #include <log/logd.h>
+ #include <log/log.h>
+@@ -72,6 +78,91 @@ int __android_log_dev_available(void)
+     return (g_log_status == kLogAvailable);
+ }
+ 
++#ifdef MOTOROLA_LOG
++/* Fallback when there is neither log.tag.<tag> nor log.tag.DEFAULT.
++ * this is compile-time defaulted to "info". The log startup code
++ * looks at the build tags to see about whether it should be DEBUG...
++ * -- just as is done in frameworks/base/core/jni/android_util_Log.cpp
++ */
++static int prio_fallback = ANDROID_LOG_INFO;
++
++/*
++ * public interface so native code can see "should i log this"
++ * and behave similar to java Log.isLoggable() calls.
++ *
++ * NB: we have (level,tag) here to match the other __android_log entries.
++ * The Java side uses (tag,level) for its ordering.
++ * since the args are (int,char*) vs (char*,char*) we won't get strange
++ * swapped-the-strings errors.
++ */
++
++#define	LOGGING_PREFIX	"log.tag."
++#define	LOGGING_DEFAULT	"log.tag.DEFAULT"
++
++int __android_log_loggable(int prio, const char *tag)
++{
++    int nprio;
++
++#if	HAVE_LIBC_SYSTEM_PROPERTIES
++    char keybuf[PROP_NAME_MAX];
++    char results[PROP_VALUE_MAX];
++    int n;
++
++    /* we can NOT cache the log.tag.<tag> and log.tag.DEFAULT
++     * values because either one can be changed dynamically.
++     *
++     * damn, says the performance compulsive.
++     */
++
++    n = 0;
++    results[0] = '\0';
++    if (tag) {
++	memcpy (keybuf, LOGGING_PREFIX, strlen (LOGGING_PREFIX) + 1);
++	/* watch out for buffer overflow */
++	strncpy (keybuf + strlen (LOGGING_PREFIX), tag,
++		 sizeof (keybuf) - strlen (LOGGING_PREFIX));
++	keybuf[sizeof (keybuf) - 1] = '\0';
++	n = __system_property_get (keybuf, results);
++    }
++
++    if (n == 0) {
++	nprio = prio_fallback;
++    } else {
++	switch (results[0])
++	{
++	case 'E':
++	    nprio = ANDROID_LOG_ERROR;
++	    break;
++	case 'W':
++	    nprio = ANDROID_LOG_WARN;
++	    break;
++	case 'I':
++	    nprio = ANDROID_LOG_INFO;
++	    break;
++	case 'D':
++	    nprio = ANDROID_LOG_DEBUG;
++	    break;
++	case 'V':
++	    nprio = ANDROID_LOG_VERBOSE;
++	    break;
++	case 'S':
++	    nprio = ANDROID_LOG_SILENT;
++	    break;
++	default:
++	    /* unspecified or invalid */
++	    nprio = prio_fallback;
++	    break;
++	}
++    }
++#else
++    /* no system property routines, fallback to a default */
++    nprio = prio_fallback;
++#endif
++
++    return ((prio >= nprio) ? 1 : 0);
++}
++#endif
++
+ static int __write_to_log_null(log_id_t log_fd, struct iovec *vec, size_t nr)
+ {
+     return -1;
+-- 
+1.8.1.2
+

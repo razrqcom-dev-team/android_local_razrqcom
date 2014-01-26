@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote  name="github" fetch="git://github.com/" />
+  <remote fetch="git://codeaurora.org/" name="caf" review="codeaurora.org"/>
+
+  <remove-project name="kernel/msm" />
+  <remove-project name="platform/build" />
+
+  <project path="build" name="dhacker29/build" remote="github" revision="kk_3.5">
+    <copyfile src="core/root.mk" dest="Makefile" />
+  </project>
+  <project name="razrqcom-dev-team/android_kernel_motorola_msm8226" path="kernel" remote="github" revision="cm-11.0-caf" />
+  <project name="dhacker29/android_device_motorola_falcon" path="device/motorola/falcon" remote="github" revision="caf" />
+  <project path="vendor/motorola" name="TheMuppets/proprietary_vendor_motorola" remote="github" revision="cm-11.0" />
+  <project path="packages/apps/Launcher3" name="CyanogenMod/android_packages_apps_Launcher3" remote="github" revision="cm-11.0" />
+  <project path="external/busybox" name="CyanogenMod/android_external_busybox" remote="github" revision="cm-11.0" />
+</manifest>
