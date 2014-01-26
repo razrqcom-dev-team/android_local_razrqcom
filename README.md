@@ -28,7 +28,7 @@ Then to sync up:
 
     repo sync
 
-You will need to patch audio, InCallUi, system/core and device/qcom/msm8226, use commands like these:
+You will need to patch some repositories for falcon, use commands like these:
 
     cd ~/Android/system/core
     wget https://raw2.github.com/razrqcom-dev-team/android_local_razrqcom/aosp-caf-8226/caf_8226_system_core.patch
@@ -45,6 +45,10 @@ You will need to patch audio, InCallUi, system/core and device/qcom/msm8226, use
     cd ~/Android/hardware/qcom/audio
     wget https://raw2.github.com/razrqcom-dev-team/android_local_razrqcom/aosp-caf-8226/caf_8226_audio_abstraction.patch
     git am --signoff < caf_8226_audio_abstraction.patch
+
+    cd ~/Android/packages/apps/Camera2
+    wget https://raw2.github.com/razrqcom-dev-team/android_local_razrqcom/aosp-caf-8226/caf_8226_camera2.patch
+    git am --signoff < caf_8226_camera2.patch
 
 Then to build:
 
