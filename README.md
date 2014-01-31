@@ -17,7 +17,7 @@ Make a build directory:
 
 To initialize your local repository using the Code Aurora manifest, use commands like these:
 
-    repo init -u git://codeaurora.org/platform/manifest.git -b release -m default_LNX.LA.3.5-08410-8x26.0.xml
+    repo init -u git://codeaurora.org/platform/manifest.git -b release -m default_LNX.LA.3.5.1-09010-8x26.0.xml
 
     curl -L -o .repo/local_manifests/aosp-caf-8226.xml -O -L https://raw.github.com/razrqcom-dev-team/android_local_razrqcom/aosp-caf-8226/aosp-caf-8226.xml
  
