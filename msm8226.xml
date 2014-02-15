@@ -2,11 +2,9 @@
 <manifest>
   <project name="CyanogenMod/android_device_motorola_qcom-common" path="device/motorola/qcom-common" remote="github" revision="cm-11.0" />
   <project name="razrqcom-dev-team/android_kernel_motorola_msm8226" path="kernel/motorola/msm8226" remote="github" revision="cm-11.0" />
-  <project name="razrqcom-dev-team/android_device_motorola_xt1028" path="device/motorola/xt1028" remote="github" revision="cm-11.0" />
-  <project name="razrqcom-dev-team/android_device_motorola_xt1032" path="device/motorola/xt1032" remote="github" revision="cm-11.0" />
-  <project name="razrqcom-dev-team/android_device_motorola_xt1034" path="device/motorola/xt1034" remote="github" revision="cm-11.0" />
+  <project name="razrqcom-dev-team/android_device_motorola_falcon" path="device/motorola/xtfalcon" remote="github" revision="cm-11.0" />
   <project name="razrqcom-dev-team/android_device_motorola_msm8226-common" path="device/motorola/msm8226-common" remote="github" revision="cm-11.0" />
   <project name="CyanogenMod/android_hardware_qcom_display-caf-new" path="hardware/qcom/display-caf-new" remote="github" revision="cm-11.0" />
-  <project name="CyanogenMod/android_hardware_qcom_fm" path="hardware/qcom/fm" remote="private" revision="cm-11.0" />
+  <project name="CyanogenMod/android_hardware_qcom_fm" path="hardware/qcom/fm" remote="github" revision="cm-11.0" />
   <project name="CyanogenMod/android_hardware_qcom_media-caf-new" path="hardware/qcom/media-caf-new" remote="github" revision="cm-11.0" />
 </manifest>
