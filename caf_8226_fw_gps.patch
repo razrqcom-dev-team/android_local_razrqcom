@@ -1,0 +1,88 @@
+From 41442ab29dac13dafe8375f74ba491752714a9b4 Mon Sep 17 00:00:00 2001
+From: Steve Kondik <shade@chemlab.org>
+Date: Thu, 6 Dec 2012 11:28:15 -0800
+Subject: [PATCH] gps: Add support for Qualcomm GPS hardware
+
+ * This ABI is changed, but we aren't using the new features in MR1.
+ * Add a little translation for the changed fields and methods.
+
+Change-Id: Ieecc2235b42f64fc69d4651855f4e9edfe7d738d
+---
+ services/jni/Android.mk                                  |  8 ++++++++
+ .../com_android_server_location_GpsLocationProvider.cpp  | 16 ++++++++++++++++
+ 2 files changed, 24 insertions(+)
+
+diff --git a/services/jni/Android.mk b/services/jni/Android.mk
+index 98e9b30..2925ae2 100644
+--- a/services/jni/Android.mk
++++ b/services/jni/Android.mk
+@@ -54,6 +54,14 @@ LOCAL_SHARED_LIBRARIES := \
+ 
+ LOCAL_CFLAGS += -DEGL_EGLEXT_PROTOTYPES -DGL_GLEXT_PROTOTYPES
+ 
++ifeq ($(BOARD_HAVE_NEW_QC_GPS),true)
++    LOCAL_CFLAGS += -DNEW_QC_GPS
++endif
++
++ifeq ($(BOARD_HAVE_SAMSUNG_GPS),true)
++	LOCAL_CFLAGS += -DSAMSUNG_GPS
++endif
++
+ ifeq ($(WITH_MALLOC_LEAK_CHECK),true)
+     LOCAL_CFLAGS += -DMALLOC_LEAK_CHECK
+ endif
+diff --git a/services/jni/com_android_server_location_GpsLocationProvider.cpp b/services/jni/com_android_server_location_GpsLocationProvider.cpp
+index aec254b..901dc86 100644
+--- a/services/jni/com_android_server_location_GpsLocationProvider.cpp
++++ b/services/jni/com_android_server_location_GpsLocationProvider.cpp
+@@ -175,7 +175,11 @@ static void agps_status_callback(AGpsStatus* agps_status)
+     uint32_t ipaddr;
+     // ipaddr field was not included in original AGpsStatus
+     if (agps_status->size >= sizeof(AGpsStatus))
++#ifdef NEW_QC_GPS
++        ipaddr = agps_status->ipv4_addr;
++#else
+         ipaddr = agps_status->ipaddr;
++#endif
+     else
+         ipaddr = 0xFFFFFFFF;
+     env->CallVoidMethod(mCallbacksObj, method_reportAGpsStatus,
+@@ -598,7 +602,11 @@ static void android_location_GpsLocationProvider_agps_data_conn_open(JNIEnv* env
+         return;
+     }
+     const char *apnStr = env->GetStringUTFChars(apn, NULL);
++#ifdef NEW_QC_GPS
++    sAGpsInterface->data_conn_open(0, apnStr, 0);
++#else
+     sAGpsInterface->data_conn_open(apnStr);
++#endif
+     env->ReleaseStringUTFChars(apn, apnStr);
+ }
+ 
+@@ -608,7 +616,11 @@ static void android_location_GpsLocationProvider_agps_data_conn_closed(JNIEnv* e
+         ALOGE("no AGPS interface in agps_data_conn_closed");
+         return;
+     }
++#ifdef NEW_QC_GPS
++    sAGpsInterface->data_conn_closed(0);
++#else
+     sAGpsInterface->data_conn_closed();
++#endif
+ }
+ 
+ static void android_location_GpsLocationProvider_agps_data_conn_failed(JNIEnv* env, jobject obj)
+@@ -617,7 +629,11 @@ static void android_location_GpsLocationProvider_agps_data_conn_failed(JNIEnv* e
+         ALOGE("no AGPS interface in agps_data_conn_failed");
+         return;
+     }
++#ifdef NEW_QC_GPS
++    sAGpsInterface->data_conn_failed(0);
++#else
+     sAGpsInterface->data_conn_failed();
++#endif
+ }
+ 
+ static void android_location_GpsLocationProvider_set_agps_server(JNIEnv* env, jobject obj,
+-- 
+1.8.1.2
+

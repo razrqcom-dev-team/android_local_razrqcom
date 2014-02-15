@@ -52,7 +52,13 @@ You will need to patch some repositories for falcon, use commands like these:
 
     cd ~/Android/device/qcom/common
     wget https://raw2.github.com/razrqcom-dev-team/android_local_razrqcom/aosp-caf-8226/caf_common_initlib.patch
-    git am --signoff < caf_common_initlib
+    git am --signoff < caf_common_initlib.patch
+
+    cd ~/Android/frameworks/base
+    wget https://raw2.github.com/razrqcom-dev-team/android_local_razrqcom/aosp-caf-8226/caf_8226_fw_gps.patch
+    git am --signoff < caf_8226_fw_gps.patch
+
+    cp ~/Android/device/motorola/falcon/include/hardware/gps.h ~/Android/hardware/libhardware/include/hardware/gps.h
 
 Then to build:
 
