@@ -50,6 +50,10 @@ You will need to patch some repositories for falcon, use commands like these:
     wget https://raw2.github.com/razrqcom-dev-team/android_local_razrqcom/aosp-caf-8226/caf_8226_camera2.patch
     git am --signoff < caf_8226_camera2.patch
 
+    cd ~/Android/device/qcom/common
+    wget https://raw2.github.com/razrqcom-dev-team/android_local_razrqcom/aosp-caf-8226/caf_common_initlib.patch
+    git am --signoff < caf_common_initlib
+
 Then to build:
 
     . build/envsetup.sh && lunch full_falcon-userdebug

@@ -1,0 +1,32 @@
+From a76ba98dafecb01635791a6dcf99d8cd00a7f756 Mon Sep 17 00:00:00 2001
+From: dhacker29 <dhackerdvm@gmail.com>
+Date: Sat, 15 Feb 2014 02:55:16 +0100
+Subject: [PATCH] Add hook for target specific libinit defines
+
+Set TARGET_LIBINIT_DEFINES_FILE := path to your file in BoardConfig
+
+Change-Id: Ie203cbc68d66b6f0cef79bd43f553bfea04ccd8e
+---
+ init/Android.mk | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/init/Android.mk b/init/Android.mk
+index 3ece110..edd6b7d 100644
+--- a/init/Android.mk
++++ b/init/Android.mk
+@@ -13,7 +13,11 @@ LOCAL_SRC_FILES := init_msm.c
+ ifeq ($(LIBINIT_USE_MSM_DEFAULT),true)
+   LOCAL_SRC_FILES += init_msmdefault.c
+ else
+-  LOCAL_SRC_FILES += init_$(TARGET_BOARD_PLATFORM).c
++  ifneq ($(TARGET_LIBINIT_DEFINES_FILE),)
++    LOCAL_SRC_FILES += ../../../../$(TARGET_LIBINIT_DEFINES_FILE)
++  else
++    LOCAL_SRC_FILES += init_$(TARGET_BOARD_PLATFORM).c
++  endif
+ endif
+ LOCAL_MODULE := libinit_msm
+ include $(BUILD_STATIC_LIBRARY)
+-- 
+1.8.1.2
+
